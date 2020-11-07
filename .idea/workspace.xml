@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/LIDAR_TEST.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/ObstacleDetectionFPS.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/environment.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/processPointClouds.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/processPointClouds.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/quiz/cluster/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/quiz/cluster/cluster.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/quiz/cluster/kdtree.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/quiz/ransac/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/quiz/ransac/ransac2d.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/render/box.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/render/render.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/render/render.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000000.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000001.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000002.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000003.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000004.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000005.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000006.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000007.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000008.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000009.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000010.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000011.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000012.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000013.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000014.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000015.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000016.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000017.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000018.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000019.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000020.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_1/0000000021.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000000.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000001.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000002.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000003.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000004.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000005.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000006.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000007.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000008.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000009.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000010.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000011.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000012.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000013.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000014.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000015.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000016.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000017.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000018.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000019.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000020.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000021.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000022.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000023.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000024.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000025.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000026.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000027.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000028.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000029.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000030.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000031.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000032.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000033.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000034.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000035.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000036.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000037.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000038.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000039.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000040.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000041.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000042.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000043.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000044.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000045.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000046.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000047.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000048.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000049.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000050.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000051.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000052.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000053.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000054.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000055.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000056.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000057.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000058.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000059.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000060.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000061.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000062.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000063.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000064.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000065.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000066.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000067.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000068.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000069.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000070.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000071.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000072.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000073.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000074.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000075.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000076.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000077.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000078.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000079.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000080.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000081.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000082.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000083.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000084.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000085.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000086.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000087.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000088.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000089.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000090.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000091.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000092.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000093.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000094.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000095.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000096.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000097.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000098.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000099.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000100.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000101.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000102.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000103.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000104.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000105.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000106.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000107.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000108.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000109.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000110.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000111.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000112.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000113.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000114.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000115.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000116.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000117.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000118.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000119.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000120.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000121.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000122.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000123.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000124.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000125.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000126.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000127.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000128.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000129.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000130.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000131.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000132.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000133.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000134.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000135.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000136.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000137.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000138.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000139.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000140.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000141.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000142.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000143.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000144.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000145.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000146.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000147.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000148.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000149.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000150.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000151.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000152.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/data_2/0000000153.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/data/pcd/simpleHighway.pcd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sensors/lidar.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jwoRiNQpehIyzTsZYEcjWvW9av" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="" />
+      <created>1604724508753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604724508753</updated>
+      <workItem from="1604724509892" duration="376000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

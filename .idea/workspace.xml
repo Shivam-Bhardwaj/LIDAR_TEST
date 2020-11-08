@@ -29,11 +29,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="refactoring">
+    <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="created point cloud processor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/processPointClouds.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/processPointClouds.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensors/lidar.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensors/lidar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quiz/ransac/ransac2d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/ransac/ransac2d.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +55,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
@@ -88,7 +87,7 @@
       <workItem from="1604724509892" duration="376000" />
       <workItem from="1604734760786" duration="4311000" />
       <workItem from="1604803474437" duration="4572000" />
-      <workItem from="1604825789826" duration="1538000" />
+      <workItem from="1604825789826" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring">
       <created>1604735621254</created>
@@ -97,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604735621254</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="created point cloud processor">
+      <created>1604828044030</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604828044030</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,37 +123,46 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="created point cloud processor" />
+    <option name="LAST_COMMIT_MESSAGE" value="created point cloud processor" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1802" height="128" key="GridCell.Tab.0.bottom" timestamp="1604827778448">
+    <state width="1802" height="128" key="GridCell.Tab.0.bottom" timestamp="1604830020324">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="962" height="553" key="GridCell.Tab.0.bottom/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.bottom/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
-    <state width="1802" height="128" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604827778448" />
-    <state width="1802" height="128" key="GridCell.Tab.0.center" timestamp="1604827778448">
+    <state width="1802" height="128" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604830020324" />
+    <state width="1802" height="128" key="GridCell.Tab.0.center" timestamp="1604830020323">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="962" height="553" key="GridCell.Tab.0.center/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.center/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
-    <state width="1802" height="128" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604827778448" />
-    <state width="1802" height="128" key="GridCell.Tab.0.left" timestamp="1604827778448">
+    <state width="1802" height="128" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604830020323" />
+    <state width="1802" height="128" key="GridCell.Tab.0.left" timestamp="1604830020323">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="962" height="553" key="GridCell.Tab.0.left/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.left/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
-    <state width="1802" height="128" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604827778448" />
-    <state width="1802" height="128" key="GridCell.Tab.0.right" timestamp="1604827778448">
+    <state width="1802" height="128" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604830020323" />
+    <state width="1802" height="128" key="GridCell.Tab.0.right" timestamp="1604830020324">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="962" height="553" key="GridCell.Tab.0.right/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.right/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
-    <state width="1802" height="128" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604827778448" />
+    <state width="1802" height="128" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604830020324" />
     <state x="1992" y="203" width="1008" height="742" key="SettingsEditor" timestamp="1604804895719">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="72" y="604" width="1008" height="742" key="SettingsEditor/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735854509" />
     <state x="1992" y="203" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604804895719" />
+    <state x="2514" y="290" width="800" height="540" key="Vcs.Push.Dialog.v2" timestamp="1604828048259">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2514" y="290" width="800" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604828048259" />
+    <state x="2580" y="249" key="run.anything.popup" timestamp="1604830055530">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2580" y="249" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604830055530" />
   </component>
 </project>

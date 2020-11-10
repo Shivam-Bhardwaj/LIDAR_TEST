@@ -34,7 +34,6 @@ struct KdTree {
         insert_helper(point, id, &(*node)->right, count + 1);
       }
     }
-
   }
 
   void insert(std::vector<float> point, int id) {
@@ -59,7 +58,6 @@ struct KdTree {
       if ((target[side] + distance) > node->point[side]) {
         search_helper(target, ids, depth + 1, distance, node->right);
       }
-
     }
   }
 

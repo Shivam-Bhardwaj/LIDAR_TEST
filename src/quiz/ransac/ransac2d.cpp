@@ -117,7 +117,7 @@ std::unordered_set<int> Ransac(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int ma
 
       auto current_point = cloud->points.at(index);
       float x4{current_point.x}, y4{current_point.y}, z4{current_point.z};
-      float d = fabs(A*x4 + B*y4 +C*z4 + D) / sqrt(A*A + B*B + C*C);
+      float d = fabs(A * x4 + B * y4 + C * z4 + D) / sqrt(A * A + B * B + C * C);
       if (d < distanceTol) {
         inliers.insert(index);
       }

@@ -37,7 +37,6 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr CreateData(std::vector<std::vector<float>> p
   cloud->height = 1;
 
   return cloud;
-
 }
 
 
@@ -77,8 +76,8 @@ void helper_cluster(int i, const std::vector<std::vector<float>> &points, std::v
   cluster.push_back(i);
 
   std::vector<int> to_be_traversed = tree->search(points[i], distanceTol);
-  for(int index: to_be_traversed){
-    if (!processed[index]){
+  for (int index: to_be_traversed) {
+    if (!processed[index]) {
       helper_cluster(index, points, cluster, processed, tree, distanceTol);
     }
   }

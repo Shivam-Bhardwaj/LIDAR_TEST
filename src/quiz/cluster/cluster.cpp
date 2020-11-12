@@ -21,11 +21,11 @@ pcl::visualization::PCLVisualizer::Ptr initScene(Box window, int zoom) {
   return viewer;
 }
 
-pcl::PointCloud<pcl::PointXYZ>::Ptr CreateData(std::vector<std::vector<float>> points) {
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
+pcl::PointCloud<pcl::PointXYZI>::Ptr CreateData(std::vector<std::vector<float>> points) {
+  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
 
   for (int i = 0; i < points.size(); i++) {
-    pcl::PointXYZ point;
+    pcl::PointXYZII point;
     point.x = points[i][0];
     point.y = points[i][1];
     point.z = 0;
@@ -48,14 +48,14 @@ render2DTree(Node *node, pcl::visualization::PCLVisualizer::Ptr &viewer, Box win
     Box lowerWindow = window;
     // split on x axis
     if (depth % 2 == 0) {
-      viewer->addLine(pcl::PointXYZ(node->point[0], window.y_min, 0), pcl::PointXYZ(node->point[0], window.y_max, 0), 0,
+      viewer->addLine(pcl::PointXYZI(node->point[0], window.y_min, 0, 1), pcl::PointXYZI(node->point[0], window.y_max, 0), 0,
                       0, 1, "line" + std::to_string(iteration));
       lowerWindow.x_max = node->point[0];
       upperWindow.x_min = node->point[0];
     }
       // split on y axis
     else {
-      viewer->addLine(pcl::PointXYZ(window.x_min, node->point[1], 0), pcl::PointXYZ(window.x_max, node->point[1], 0), 1,
+      viewer->addLine(pcl::PointXYZI(window.x_min, node->point[1], 0), pcl::PointXYZI(window.x_max, node->point[1], 0), 1,
                       0, 0, "line" + std::to_string(iteration));
       lowerWindow.y_max = node->point[1];
       upperWindow.y_min = node->point[1];
@@ -128,7 +128,7 @@ int main() {
                                             {-1.2, -7.2},
                                             {2.2,  -8.9}};
   //std::vector<std::vector<float>> points = { {-6.2,7}, {-6.3,8.4}, {-5.2,7.1}, {-5.7,6.3} };
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = CreateData(points);
+  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud = CreateData(points);
 
   KdTree *tree = new KdTree;
 
@@ -158,9 +158,9 @@ int main() {
   int clusterId = 0;
   std::vector<Color> colors = {Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)};
   for (std::vector<int> cluster : clusters) {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr clusterCloud(new pcl::PointCloud<pcl::PointXYZ>());
+    pcl::PointCloud<pcl::PointXYZI>::Ptr clusterCloud(new pcl::PointCloud<pcl::PointXYZI>());
     for (int indice: cluster)
-      clusterCloud->points.push_back(pcl::PointXYZ(points[indice][0], points[indice][1], 0));
+      clusterCloud->points.push_back(pcl::PointXYZI(points[indice][0], points[indice][1], 0));
     renderPointCloud(viewer, clusterCloud, "cluster" + std::to_string(clusterId), colors[clusterId % 3]);
     ++clusterId;
   }

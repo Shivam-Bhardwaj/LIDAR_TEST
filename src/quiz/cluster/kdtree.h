@@ -27,7 +27,7 @@ struct KdTree {
     if (*node == nullptr) {
       *node = new Node(point, id);
     } else {
-      uint depth = count % 2;
+      uint depth = count % 3;
       if (point[depth] < (*node)->point[depth]) {
         insert_helper(point, id, &(*node)->left, count + 1);
       } else {
@@ -46,12 +46,15 @@ struct KdTree {
     if (node != nullptr) {
       bool is_in_box =
         (node->point[0] >= target[0] - distance) && (node->point[0] <= target[0] + distance) &&
-        (node->point[1] >= target[1] - distance) && (node->point[1] <= target[1] + distance);
+        (node->point[1] >= target[1] - distance) && (node->point[1] <= target[1] + distance) &&
+        (node->point[2] >= target[2] - distance) && (node->point[2] <= target[2] + distance);
       if (is_in_box) {
-        float d = sqrt(pow(node->point[0] - target[0], 2.0) + pow(node->point[1] - target[1], 2.0));
+        float d = sqrt(pow(node->point[0] - target[0], 2.0)
+                       + pow(node->point[1] - target[1], 2.0)
+                       + pow(node->point[2] - target[2], 2.0));
         if (d <= distance) { ids.push_back(node->id); }
       }
-      int side = depth % 2;
+      int side = depth % 3;
       if ((target[side] - distance) < node->point[side]) {
         search_helper(target, ids, depth + 1, distance, node->left);
       }

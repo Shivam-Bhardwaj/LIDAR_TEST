@@ -29,13 +29,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="euclidean clustering implemented">
+    <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="LIDAR pipeline implemented using PCL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/processPointClouds.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/processPointClouds.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quiz/cluster/cluster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/cluster/cluster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quiz/cluster/kdtree.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/cluster/kdtree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/ransac/ransac2d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/ransac/ransac2d.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +62,9 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="environment" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="playback" TARGET_NAME="environment" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="playback" RUN_TARGET_NAME="environment">
@@ -93,7 +91,7 @@
       <workItem from="1604803474437" duration="4572000" />
       <workItem from="1604825789826" duration="8146000" />
       <workItem from="1604876757030" duration="10131000" />
-      <workItem from="1604965990296" duration="9450000" />
+      <workItem from="1604965990296" duration="11732000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring">
       <created>1604735621254</created>
@@ -137,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604913439047</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="LIDAR pipeline implemented using PCL">
+      <created>1605000973880</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605000973880</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,37 +167,38 @@
     <MESSAGE value="implemented RANSAC3D from scratch" />
     <MESSAGE value="Kd tree based clustering implemented" />
     <MESSAGE value="euclidean clustering implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="euclidean clustering implemented" />
+    <MESSAGE value="LIDAR pipeline implemented using PCL" />
+    <option name="LAST_COMMIT_MESSAGE" value="LIDAR pipeline implemented using PCL" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="962" height="299" key="GridCell.Tab.0.bottom" timestamp="1604997276228">
+    <state width="962" height="299" key="GridCell.Tab.0.bottom" timestamp="1605003193650">
       <screen x="0" y="27" width="3000" height="1893" />
     </state>
-    <state width="962" height="299" key="GridCell.Tab.0.bottom/0.27.3000.1893@0.27.3000.1893" timestamp="1604997276228" />
+    <state width="962" height="299" key="GridCell.Tab.0.bottom/0.27.3000.1893@0.27.3000.1893" timestamp="1605003193650" />
     <state width="962" height="553" key="GridCell.Tab.0.bottom/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.bottom/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
     <state width="1802" height="275" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604833947899" />
     <state width="1802" height="133" key="GridCell.Tab.0.bottom/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1604914634917" />
-    <state width="962" height="299" key="GridCell.Tab.0.center" timestamp="1604997276227">
+    <state width="962" height="299" key="GridCell.Tab.0.center" timestamp="1605003193649">
       <screen x="0" y="27" width="3000" height="1893" />
     </state>
-    <state width="962" height="299" key="GridCell.Tab.0.center/0.27.3000.1893@0.27.3000.1893" timestamp="1604997276227" />
+    <state width="962" height="299" key="GridCell.Tab.0.center/0.27.3000.1893@0.27.3000.1893" timestamp="1605003193649" />
     <state width="962" height="553" key="GridCell.Tab.0.center/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.center/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
     <state width="1802" height="275" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604833947898" />
     <state width="1802" height="133" key="GridCell.Tab.0.center/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1604914634917" />
-    <state width="962" height="299" key="GridCell.Tab.0.left" timestamp="1604997276227">
+    <state width="962" height="299" key="GridCell.Tab.0.left" timestamp="1605003193648">
       <screen x="0" y="27" width="3000" height="1893" />
     </state>
-    <state width="962" height="299" key="GridCell.Tab.0.left/0.27.3000.1893@0.27.3000.1893" timestamp="1604997276227" />
+    <state width="962" height="299" key="GridCell.Tab.0.left/0.27.3000.1893@0.27.3000.1893" timestamp="1605003193648" />
     <state width="962" height="553" key="GridCell.Tab.0.left/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.left/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
     <state width="1802" height="275" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604833947898" />
     <state width="1802" height="133" key="GridCell.Tab.0.left/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1604914634917" />
-    <state width="962" height="299" key="GridCell.Tab.0.right" timestamp="1604997276228">
+    <state width="962" height="299" key="GridCell.Tab.0.right" timestamp="1605003193650">
       <screen x="0" y="27" width="3000" height="1893" />
     </state>
-    <state width="962" height="299" key="GridCell.Tab.0.right/0.27.3000.1893@0.27.3000.1893" timestamp="1604997276228" />
+    <state width="962" height="299" key="GridCell.Tab.0.right/0.27.3000.1893@0.27.3000.1893" timestamp="1605003193650" />
     <state width="962" height="553" key="GridCell.Tab.0.right/1920.0.1080.1920/0.396.1920.1080@0.396.1920.1080" timestamp="1604735844471" />
     <state width="1802" height="2" key="GridCell.Tab.0.right/1920.0.1080.1920/0.396.1920.1080@1920.0.1080.1920" timestamp="1604749809263" />
     <state width="1802" height="275" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604833947899" />

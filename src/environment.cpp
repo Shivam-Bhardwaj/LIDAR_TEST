@@ -28,7 +28,12 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr &viewer, ProcessPointCloud
   auto filterCloud = pointProcessorI->FilterCloud(inputCloud, 0.1,
                                                   Eigen::Vector4f(-10, -6, -2, 1),
                                                   Eigen::Vector4f(17, 6, 2, 1));
-
+ // TODO: apply ransac
+ // TODO: segment plane
+ // TODO:
+ // TODO:
+ // TODO:
+ // TODO:
 //  auto seg = Ransac(filterCloud, 100, 0.2);
 //
 //  pcl::PointIndices::Ptr inliers(new pcl::PointIndices);

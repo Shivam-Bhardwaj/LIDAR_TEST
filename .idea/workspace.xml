@@ -32,8 +32,6 @@
     <list default="true" id="dcf9f5a8-ffce-4a12-ac57-caa449b1e822" name="Default Changelist" comment="LIDAR pipeline implemented using PCL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/cluster/cluster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/cluster/cluster.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiz/cluster/kdtree.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/quiz/cluster/kdtree.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +60,9 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="environment" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="playback" TARGET_NAME="environment" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="playback" RUN_TARGET_NAME="environment">
@@ -92,6 +90,7 @@
       <workItem from="1604825789826" duration="8146000" />
       <workItem from="1604876757030" duration="10131000" />
       <workItem from="1604965990296" duration="11732000" />
+      <workItem from="1605604621163" duration="233000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring">
       <created>1604735621254</created>

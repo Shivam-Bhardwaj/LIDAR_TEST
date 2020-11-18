@@ -6,13 +6,12 @@
 
 // Structure to represent node of kd tree
 struct Node {
-  std::vector<float> point;
+  pcl::PointXYZI point;
   int id;
   Node *left;
   Node *right;
 
-  Node(std::vector<float> arr, int setId)
-    : point(arr), id(setId), left(NULL), right(NULL) {}
+  Node(pcl::PointXYZI arr, int setId) : point(arr), id(setId), left(NULL), right(NULL) {}
 };
 
 struct KdTree {
@@ -23,55 +22,66 @@ struct KdTree {
   KdTree()
     : root(NULL) {}
 
-  void insert_helper(std::vector<float> point, int id, Node **node, int count) {
-    if (*node == nullptr) {
-      *node = new Node(point, id);
+  void insertHelper(Node **node, int depth, pcl::PointXYZI point, int id) {
+    if (*node == NULL) {
+      (*node) = new Node(point, id);
     } else {
-      uint depth = count % 3;
-      if (point[depth] < (*node)->point[depth]) {
-        insert_helper(point, id, &(*node)->left, count + 1);
+      int cd = depth % 3;  // 3 dim kd-tree
+
+      if (cd == 0) {
+        if (point.x < (*node)->point.x)
+          insertHelper(&(*node)->left, depth + 1, point, id);
+        else
+          insertHelper(&(*node)->right, depth + 1, point, id);
       } else {
-        insert_helper(point, id, &(*node)->right, count + 1);
+        if (point.y < (*node)->point.y)
+          insertHelper(&(*node)->left, depth + 1, point, id);
+        else
+          insertHelper(&(*node)->right, depth + 1, point, id);
       }
     }
   }
 
-  void insert(std::vector<float> point, int id) {
+  void insert(pcl::PointXYZI point, int id) {
     // TODO: Fill in this function to insert a new point into the tree
     // the function should create a new node and place correctly with in the root
-    insert_helper(point, id, &root, 0);
+    insertHelper(&root, 0, point, id);
   }
 
-  void search_helper(std::vector<float> target, std::vector<int> &ids, int depth, float distance, Node *node) {
-    if (node != nullptr) {
-      bool is_in_box =
-        (node->point[0] >= target[0] - distance) && (node->point[0] <= target[0] + distance) &&
-        (node->point[1] >= target[1] - distance) && (node->point[1] <= target[1] + distance) &&
-        (node->point[2] >= target[2] - distance) && (node->point[2] <= target[2] + distance);
-      if (is_in_box) {
-        float d = sqrt(pow(node->point[0] - target[0], 2.0)
-                       + pow(node->point[1] - target[1], 2.0)
-                       + pow(node->point[2] - target[2], 2.0));
-        if (d <= distance) { ids.push_back(node->id); }
+  void searchHelper(pcl::PointXYZI pivot, Node *node, int depth, float distanceTol, std::vector<size_t> &ids) {
+    if (node != NULL) {
+      if ((node->point.x >= (pivot.x - distanceTol) && (node->point.x <= (pivot.x + distanceTol))) &&
+          (node->point.y >= (pivot.y - distanceTol) && (node->point.y <= (pivot.y + distanceTol)))) {
+        float distance = sqrt((node->point.x - pivot.x) * (node->point.x - pivot.x) +
+                              (node->point.y - pivot.y) * (node->point.y - pivot.y));
+
+        if (distance <= distanceTol)
+          ids.push_back(node->id);
       }
-      int side = depth % 3;
-      if ((target[side] - distance) < node->point[side]) {
-        search_helper(target, ids, depth + 1, distance, node->left);
+      if (depth % 3 == 0) // 3 dim kd-tree
+      {
+        if ((pivot.x - distanceTol) < node->point.x)
+          searchHelper(pivot, node->left, depth + 1, distanceTol, ids);
+
+        if ((pivot.x + distanceTol) > node->point.x)
+          searchHelper(pivot, node->right, depth + 1, distanceTol, ids);
+      } else {
+        if ((pivot.y - distanceTol) < node->point.y)
+          searchHelper(pivot, node->left, depth + 1, distanceTol, ids);
+        if ((pivot.y + distanceTol) > node->point.y)
+          searchHelper(pivot, node->right, depth + 1, distanceTol, ids);
       }
-      if ((target[side] + distance) > node->point[side]) {
-        search_helper(target, ids, depth + 1, distance, node->right);
-      }
+
     }
   }
 
-  // return a list of point ids in the tree that are within distance of target
-  std::vector<int> search(std::vector<float> target, float distanceTol) {
-    std::vector<int> ids;
-    search_helper(target, ids, 0, distanceTol, root);
+  // return a list of point ids in the tree that are within distance of pivot
+  std::vector<size_t> search(pcl::PointXYZI pivot, float distanceTol) {
+    std::vector<size_t> ids;
+    searchHelper(pivot, root, 0, distanceTol, ids);
+
     return ids;
   }
-
-
 };
 
 

@@ -61,10 +61,7 @@ ProcessPointClouds<PointT>::FilterCloud(typename pcl::PointCloud<PointT>::Ptr cl
   extract.setIndices(inliers);
   extract.setNegative(true);
   extract.filter(*cloud_region);
-
-
   return cloud_region;
-
 }
 
 

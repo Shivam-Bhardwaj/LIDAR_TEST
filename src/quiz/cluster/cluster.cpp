@@ -5,6 +5,10 @@
 #include "../../render/box.h"
 #include <chrono>
 #include <string>
+#include <pcl/io/pcd_io.h>
+#include <pcl/filters/voxel_grid.h>
+#include <pcl/filters/crop_box.h>
+#include <pcl/filters/extract_indices.h>
 #include "kdtree.h"
 
 // Arguments:
@@ -21,154 +25,177 @@ pcl::visualization::PCLVisualizer::Ptr initScene(Box window, int zoom) {
   return viewer;
 }
 
-pcl::PointCloud<pcl::PointXYZI>::Ptr CreateData(std::vector<std::vector<float>> points) {
-  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
+void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr &viewer);
 
-  for (int i = 0; i < points.size(); i++) {
-    pcl::PointXYZII point;
-    point.x = points[i][0];
-    point.y = points[i][1];
-    point.z = 0;
+void clusterHelper(size_t indice, pcl::PointCloud<pcl::PointXYZI>::Ptr cloud, std::vector<size_t> cluster,
+                   std::vector<bool> &processed, KdTree *tree, float distanceTol) {
+  processed[indice] = true;
+  cluster.push_back(indice);
 
-    cloud->points.push_back(point);
+  std::vector<size_t> nearest = tree->search(cloud->points[indice], distanceTol);
 
-  }
-  cloud->width = cloud->points.size();
-  cloud->height = 1;
-
-  return cloud;
-}
-
-
-void
-render2DTree(Node *node, pcl::visualization::PCLVisualizer::Ptr &viewer, Box window, int &iteration, uint depth = 0) {
-
-  if (node != NULL) {
-    Box upperWindow = window;
-    Box lowerWindow = window;
-    // split on x axis
-    if (depth % 2 == 0) {
-      viewer->addLine(pcl::PointXYZI(node->point[0], window.y_min, 0, 1), pcl::PointXYZI(node->point[0], window.y_max, 0), 0,
-                      0, 1, "line" + std::to_string(iteration));
-      lowerWindow.x_max = node->point[0];
-      upperWindow.x_min = node->point[0];
-    }
-      // split on y axis
-    else {
-      viewer->addLine(pcl::PointXYZI(window.x_min, node->point[1], 0), pcl::PointXYZI(window.x_max, node->point[1], 0), 1,
-                      0, 0, "line" + std::to_string(iteration));
-      lowerWindow.y_max = node->point[1];
-      upperWindow.y_min = node->point[1];
-    }
-    iteration++;
-
-    render2DTree(node->left, viewer, lowerWindow, iteration, depth + 1);
-    render2DTree(node->right, viewer, upperWindow, iteration, depth + 1);
-
-
-  }
-
-}
-
-void helper_cluster(int i, const std::vector<std::vector<float>> &points, std::vector<int> &cluster,
-                    std::vector<bool> processed, KdTree *tree, float distanceTol) {
-  processed[i] = true;
-  cluster.push_back(i);
-
-  std::vector<int> to_be_traversed = tree->search(points[i], distanceTol);
-  for (int index: to_be_traversed) {
-    if (!processed[index]) {
-      helper_cluster(index, points, cluster, processed, tree, distanceTol);
-    }
+  for (size_t id : nearest) {
+    if (!processed[id])
+      clusterHelper(id, cloud, cluster, processed, tree, distanceTol);
   }
 }
 
-std::vector<std::vector<int>>
-euclideanCluster(const std::vector<std::vector<float>> &points, KdTree *tree, float distanceTol) {
+pcl::PointCloud<pcl::PointXYZI>::Ptr
+FilterCloud(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud, float filterRes,
+            Eigen::Vector4f minPoint, Eigen::Vector4f maxPoint) {
 
+  // Time segmentation process
+
+  // TODO:: Fill in the function to do voxel grid point reduction and region based filtering
+  /** Voxel grid filtering */
+  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZI>);
+  pcl::VoxelGrid<pcl::PointXYZI> vg;
+  vg.setInputCloud(cloud);
+  vg.setLeafSize(filterRes, filterRes, filterRes);
+  vg.filter(*cloud_filtered);
+
+  /** bounding box*/
+  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_region(new pcl::PointCloud<pcl::PointXYZI>);
+  pcl::CropBox<pcl::PointXYZI> region(true);
+  region.setMin(minPoint);
+  region.setMax(maxPoint);
+  region.setInputCloud(cloud_filtered);
+  region.filter(*cloud_region);
+
+  std::vector<int> indices;
+
+  pcl::CropBox<pcl::PointXYZI> roof(true);
+  roof.setMin(Eigen::Vector4f(-1.5, -1.7, -1, 1));
+  roof.setMax(Eigen::Vector4f(2.6, 1.7, -0.4, 1));
+  roof.setInputCloud(cloud_region);
+  roof.filter(indices);
+
+  pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+  for (int point: indices) {
+    inliers->indices.push_back(point);
+  }
+
+  pcl::ExtractIndices<pcl::PointXYZI> extract;
+  extract.setInputCloud(cloud_region);
+  extract.setIndices(inliers);
+  extract.setNegative(true);
+  extract.filter(*cloud_region);
+  return cloud_region;
+}
+
+
+std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr>
+euclideanCluster(const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud, KdTree *tree, float distanceTol, int minSize,
+                 int maxSize) {
   // TODO: Fill out this function to return list of indices for each cluster
-  std::vector<std::vector<int>> clusters;
-  std::vector<bool> processed(points.size(), false);
-  int i{0};
-  while (i < points.size()) {
-    if (processed[i]) {
-      i++;
-      continue;
+
+  std::vector<typename pcl::PointCloud<pcl::PointXYZI>::Ptr> clusters;
+  std::vector<bool> processed(cloud->points.size(), false);
+
+  for (size_t idx = 0; idx < cloud->points.size(); ++idx) {
+    if (!processed[idx]) {
+      std::vector<size_t> cluster_idx;
+      typename pcl::PointCloud<pcl::PointXYZI>::Ptr cluster(new pcl::PointCloud<pcl::PointXYZI>);
+
+      clusterHelper(idx, cloud, cluster_idx, processed, tree, distanceTol);
+
+      if (cluster_idx.size() >= minSize && cluster_idx.size() <= maxSize) {
+        for (size_t i : cluster_idx) {
+          cluster->points.push_back(cloud->points[i]);
+        }
+
+        cluster->width = cluster->points.size();
+        cluster->height = 1;
+
+        clusters.push_back(cluster);
+      } else {
+        for (size_t i = 1; i < cluster_idx.size(); i++) {
+          processed[cluster_idx[i]] = false;
+        }
+      }
     }
-    std::vector<int> cluster;
-    helper_cluster(i++, points, cluster, processed, tree, distanceTol);
-    clusters.push_back(cluster);
   }
   return clusters;
-
 }
 
 int main() {
+  auto startTime = std::chrono::steady_clock::now();
 
   // Create viewer
-  Box window;
-  window.x_min = -10;
-  window.x_max = 10;
-  window.y_min = -10;
-  window.y_max = 10;
-  window.z_min = 0;
-  window.z_max = 0;
-  pcl::visualization::PCLVisualizer::Ptr viewer = initScene(window, 25);
 
-  // Create data
-  std::vector<std::vector<float>> points = {{-6.2, 7},
-                                            {-6.3, 8.4},
-                                            {-5.2, 7.1},
-                                            {-5.7, 6.3},
-                                            {7.2,  6.1},
-                                            {8.0,  5.3},
-                                            {7.2,  7.1},
-                                            {0.2,  -7.1},
-                                            {1.7,  -6.9},
-                                            {-1.2, -7.2},
-                                            {2.2,  -8.9}};
-  //std::vector<std::vector<float>> points = { {-6.2,7}, {-6.3,8.4}, {-5.2,7.1}, {-5.7,6.3} };
-  pcl::PointCloud<pcl::PointXYZI>::Ptr cloud = CreateData(points);
+  pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
+  CameraAngle setAngle = XY;
+  initCamera(setAngle, viewer);
 
-  KdTree *tree = new KdTree;
+  std::string file = "/home/shivam/LIDAR_TEST/src/sensors/data/pcd/data_1/0000000000.pcd";
+  pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud(new pcl::PointCloud<pcl::PointXYZI>);
 
-  for (int i = 0; i < points.size(); i++)
-    tree->insert(points[i], i);
+  if (pcl::io::loadPCDFile<pcl::PointXYZI>(file, *inputCloud) == -1) //* load the file
+  {
+    PCL_ERROR ("Couldn't read file \n");
+  }
+  std::cerr << "Loaded " << inputCloud->points.size() << " data points from " + file << std::endl;
+  inputCloud = FilterCloud(inputCloud, 0.3, Eigen::Vector4f(-20, -6, -3, 1), Eigen::Vector4f(30, 7, 2, 1));
+  renderPointCloud(viewer, inputCloud, "inputCloud");
 
-  int it = 0;
-  render2DTree(tree->root, viewer, window, it);
+  auto *tree = new KdTree;
 
-  std::cout << "Test Search" << std::endl;
-  std::vector<int> nearby = tree->search({-6, 7}, 3.0);
-  for (int index : nearby)
-    std::cout << index << ",";
-  std::cout << std::endl;
+  for (size_t i = 0; i < inputCloud->points.size(); i++)
+    tree->insert(inputCloud->points[i], i);
 
-  // Time segmentation process
-  auto startTime = std::chrono::steady_clock::now();
-  //
-  std::vector<std::vector<int>> clusters = euclideanCluster(points, tree, 3.0);
-  //
-  auto endTime = std::chrono::steady_clock::now();
-  auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
-  std::cout << "clustering found " << clusters.size() << " and took " << elapsedTime.count() << " milliseconds"
-            << std::endl;
+  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> clusters = euclideanCluster(inputCloud, tree, 0.35, 15, 500);
 
-  // Render clusters
   int clusterId = 0;
-  std::vector<Color> colors = {Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)};
-  for (std::vector<int> cluster : clusters) {
-    pcl::PointCloud<pcl::PointXYZI>::Ptr clusterCloud(new pcl::PointCloud<pcl::PointXYZI>());
-    for (int indice: cluster)
-      clusterCloud->points.push_back(pcl::PointXYZI(points[indice][0], points[indice][1], 0));
-    renderPointCloud(viewer, clusterCloud, "cluster" + std::to_string(clusterId), colors[clusterId % 3]);
+
+  std::vector<Color> colors = { Color(1,0,0), Color(1,1,0), Color(0,0,1) };
+
+  for (const pcl::PointCloud<pcl::PointXYZI>::Ptr& cluster : clusters)
+  {
+    std::cout << "cluster size ";
+    pointProcessor->numPoints(cluster);
+    renderPointCloud(viewer, cluster, "obstCloud" + std::to_string(clusterId), colors[clusterId  % colors.size()]);
+
+    Box box = pointProcessor->BoundingBox(cluster);
+    renderBox(viewer, box, clusterId);
+
     ++clusterId;
   }
-  if (clusters.size() == 0)
-    renderPointCloud(viewer, cloud, "data");
+
+  auto endTime = std::chrono::steady_clock::now();
+  auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
+  std::cout << "pipeline took " << elapsedTime.count() << " milliseconds" << std::endl;
 
   while (!viewer->wasStopped()) {
     viewer->spinOnce();
   }
 
+
+}
+
+
+void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr &viewer) {
+
+  viewer->setBackgroundColor(0, 0, 0);
+
+  // set camera position and angle
+  viewer->initCameraParameters();
+  // distance away in meters
+  int distance = 16;
+
+  switch (setAngle) {
+    case XY :
+      viewer->setCameraPosition(-distance, -distance, distance, 1, 1, 0);
+      break;
+    case TopDown :
+      viewer->setCameraPosition(0, 0, distance, 1, 0, 1);
+      break;
+    case Side :
+      viewer->setCameraPosition(0, -distance, 0, 0, 0, 1);
+      break;
+    case FPS :
+      viewer->setCameraPosition(-10, 0, 0, 0, 0, 1);
+  }
+
+  if (setAngle != FPS)
+    viewer->addCoordinateSystem(1.0);
 }

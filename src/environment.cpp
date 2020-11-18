@@ -10,6 +10,7 @@
 #include "quiz/cluster/kdtree.h"
 #include <thread>
 #include <unordered_set>
+
 float a, b, c;
 
 
@@ -24,43 +25,59 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr &viewer, ProcessPointCloud
   // ----------------------------------------------------
   // -----Open 3D viewer and display City Block     -----
   // ----------------------------------------------------
-
-  auto filterCloud = pointProcessorI->FilterCloud(inputCloud, 0.1,
+  auto startTime = std::chrono::steady_clock::now();
+  auto filterCloud = pointProcessorI->FilterCloud(inputCloud, 0.2,
                                                   Eigen::Vector4f(-10, -6, -2, 1),
                                                   Eigen::Vector4f(17, 6, 2, 1));
- // TODO: apply ransac
- // TODO: segment plane
- // TODO:
- // TODO:
- // TODO:
- // TODO:
-//  auto seg = Ransac(filterCloud, 100, 0.2);
+
+  auto seg = Ransac(filterCloud, 100, 0.2);
+
+  pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+  for (int point: seg) {
+    inliers->indices.push_back(point);
+  }
+
+
+  pcl::ExtractIndices<pcl::PointXYZI> extract;
+  extract.setInputCloud(filterCloud);
+  extract.setIndices(inliers);
+  extract.setNegative(true);
+  extract.filter(*inputCloud);
+  KdTree *tree = new KdTree;
+
+  std::vector<std::vector<float>> input_points;
+
+  for (int i = 0; i < inputCloud->points.size(); i++) {
+    tree->insert({inputCloud->points.at(i).x,
+                  inputCloud->points.at(i).y,
+                  inputCloud->points.at(i).z}, i);
+    input_points.push_back({{inputCloud->points.at(i).x,
+                                inputCloud->points.at(i).y,
+                                inputCloud->points.at(i).z}});
+  }
+
+
+  std::vector<std::vector<int>> clusters = euclideanCluster(input_points, tree, 3.0);
+
+//  auto segmented_plane = pointProcessorI->SegmentPlane(filterCloud, 100, 0.2);
+
+//  auto clusters = pointProcessorI->Clustering(inputCloud, 0.3, 10, 1000);
 //
-//  pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
-//  for(int point: seg){
-//    inliers->indices.push_back(point);
+//  int clusterId = 0;
+//  for (const pcl::PointCloud<pcl::PointXYZI>::Ptr &cluster : clusters) {
+//    std::cout << "cluster size ";
+//    pointProcessorI->numPoints(cluster);
+//    renderPointCloud(viewer, cluster, "obstCloud" + std::to_string(clusterId), Color(1, 1, 1));
+//    ++clusterId;
+//    Box box = pointProcessorI->BoundingBox(cluster);
+//    renderBox(viewer, box, clusterId);
 //  }
-//
-//  pcl::ExtractIndices<pcl::PointXYZI> extract;
-//  extract.setInputCloud(filterCloud);
-//  extract.setIndices(inliers);
 //  extract.setNegative(false);
 //  extract.filter(*inputCloud);
-
-  auto segmented_plane = pointProcessorI->SegmentPlane(filterCloud, 100, 0.2);
-
-  auto clusters = pointProcessorI->Clustering(segmented_plane.first, a, int(b), int(c));
-
-  int clusterId = 0;
-  for (const pcl::PointCloud<pcl::PointXYZI>::Ptr &cluster : clusters) {
-    std::cout << "cluster size ";
-    pointProcessorI->numPoints(cluster);
-    renderPointCloud(viewer, cluster, "obstCloud" + std::to_string(clusterId), Color(1, 1, 1));
-    ++clusterId;
-    Box box = pointProcessorI->BoundingBox(cluster);
-    renderBox(viewer, box, clusterId);
-  }
-  renderPointCloud(viewer,inputCloud, "cloud", Color(0, 1, 0));
+//  renderPointCloud(viewer,inputCloud, "cloud", Color(0, 1, 0));
+  auto endTime = std::chrono::steady_clock::now();
+  auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
+  std::cout << "pipeline took " << elapsedTime.count() << " milliseconds" << std::endl;
 }
 
 //setAngle: SWITCH CAMERA ANGLE {XY, TopDown, Side, FPS}
@@ -90,7 +107,7 @@ int main(int argc, char **argv) {
   initCamera(setAngle, viewer);
 
   auto *pointProcessorI = new ProcessPointClouds<pcl::PointXYZI>();
-  std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd("../src/sensors/data/pcd/data_2");
+  std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd("../src/sensors/data/pcd/data_1");
   auto streamIterator = stream.begin();
   pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloudI;
   while (!viewer->wasStopped()) {

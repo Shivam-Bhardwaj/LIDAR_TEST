@@ -13,7 +13,7 @@
 
 float A, B, C;
 
-void clusterHelper(size_t indice, const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud, std::vector<size_t> cluster,
+void clusterHelper(size_t indice, const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud, std::vector<size_t> &cluster,
                    std::vector<bool> &processed, KdTree *tree, float distanceTol);
 
 std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr>
@@ -92,7 +92,7 @@ int main(int argc, char **argv) {
   initCamera(setAngle, viewer);
 
   auto *pointProcessorI = new ProcessPointClouds<pcl::PointXYZI>();
-  std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd("../src/sensors/data/pcd/data_1");
+  std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd("../src/sensors/data/pcd/data_2");
   auto streamIterator = stream.begin();
   pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloudI;
   while (!viewer->wasStopped()) {
@@ -139,7 +139,7 @@ void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr &vi
     viewer->addCoordinateSystem(1.0);
 }
 
-void clusterHelper(size_t indice, const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud, std::vector<size_t> cluster,
+void clusterHelper(size_t indice, const pcl::PointCloud<pcl::PointXYZI>::Ptr &cloud, std::vector<size_t> &cluster,
                    std::vector<bool> &processed, KdTree *tree, float distanceTol) {
   processed[indice] = true;
   cluster.push_back(indice);
